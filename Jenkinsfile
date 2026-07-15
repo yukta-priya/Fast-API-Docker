@@ -10,19 +10,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t fastapi-app .'
+                bat 'docker build -t fastapi-app .'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'pytest > results.txt'
+                bat 'pytest > results.txt'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 8000:8000 fastapi-app'
+                bat 'docker run -d -p 8000:8000 fastapi-app'
             }
         }
     }
